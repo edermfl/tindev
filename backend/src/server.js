@@ -1,6 +1,7 @@
 const express =  require('express');
 const mongoose = require('mongoose');
-const routes = require('./routes');
+const cors = require('cors');
+const routes = require('./routes'); 
 
 const server = express();
 
@@ -12,7 +13,7 @@ mongoose.connect('mongodb+srv://tindev:tindev@clustereder-0gbps.mongodb.net/tind
 }).catch(function (err) {
     console.log("ERROR : " + err.message);
 });
-
+server.use(cors());
 server.use(express.json());
 server.use(routes);
 
